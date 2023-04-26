@@ -2,20 +2,21 @@ import React from "react";
 import Warning from "../warning/Warning";
 import "./update.css";
 import { useState } from "react";
-import { useDispatch,useSelector } from "react-redux";
-import { addHello, remove, update } from "../../redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { remove, update } from "../../redux/userSlice";
 
 export default function Update() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [title, setTitle] = useState("");
 
-  const user = useSelector(state=>state.user)
+  const user = useSelector(state => state.user)
 
   const dispatch = useDispatch()
 
   const handleUpdate = (e) => {
     e.preventDefault()
-    dispatch(update({name,email}))
+    dispatch(update({ name, email,title }))
   }
 
   const handleDelete = () => {
@@ -46,7 +47,16 @@ export default function Update() {
                 className="formInput"
                 type="text"
                 placeholder={user.name}
-                onChange={e=>setName(e.target.value)}
+                onChange={e => setName(e.target.value)}
+              />
+            </div>
+            <div className="formItem">
+              <label>title</label>
+              <input
+                className="formInput"
+                type="text"
+                placeholder={user.title}
+                onChange={e => setTitle(e.target.value)}
               />
             </div>
             <div className="formItem">
@@ -55,7 +65,7 @@ export default function Update() {
                 className="formInput"
                 type="text"
                 placeholder={user.email}
-                onChange={e=>setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
               />
             </div>
             <div className="formItem">

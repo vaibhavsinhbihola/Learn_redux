@@ -11,11 +11,9 @@ const userSlice = createSlice({
         update: (state, action) => {
             state.name = action.payload.name
             state.email = action.payload.email
+            state.title = action.payload.title
         },
         remove: (state) => (state = {}),
-        addHello: (state,action) => {
-            state.name = "Hello" + action.payload.name
-        }
     },
 })
 
